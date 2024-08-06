@@ -1,4 +1,5 @@
 export { Button } from './button';
+export { Title } from './title';
 export { Checkbox } from './checkbox';
 export { Dialog } from './dialog';
 export { Drawer } from './drawer';

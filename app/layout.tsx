@@ -2,6 +2,7 @@ import React from 'react';
 import './globals.css';
 import { Nunito } from 'next/font/google';
 import { Metadata } from 'next';
+import { Header } from '@/components/shared/header';
 
 const nunito = Nunito({
 	subsets: ['cyrillic'],
@@ -23,7 +24,12 @@ export default function RootLayout({
 			<head>
 				<link data-rh='true' rel='icon' href='/logo.png' />
 			</head>
-			<body className='min-h-screen'>{children}</body>
+			<body className='min-h-screen'>
+				<main>
+					<Header />
+					{children}
+				</main>
+			</body>
 		</html>
 	);
 }
