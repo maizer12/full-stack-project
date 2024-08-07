@@ -11,7 +11,7 @@ export const SortPopup: React.FC<Props> = ({ className }) => {
 	return (
 		<div className={className}>
 			<Popover>
-				<PopoverTrigger className={cn('inline-flex items-center gap-1 bg-gray-50 px-5 h-[52px] rounded-2xl cursor-pointer', className)}>
+				<PopoverTrigger className={cn('inline-flex items-center gap-1 bg-gray-50 px-5 h-[52px] rounded-2xl cursor-pointer gap-2.5', className)}>
 					<ArrowUpDown className='w-4 h-4' />
 					<b>Sort by:</b>
 					<b className='text-primary'>rating</b>
