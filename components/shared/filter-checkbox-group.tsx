@@ -19,15 +19,20 @@ interface Props {
 
 export const FilterCheckboxGroup: React.FC<Props> = ({ title, items, defaultItems, limit = 5, searchInputPlaceholder = 'Search...', onChange, defaultValue, className }) => {
 	const [showAll, setShowAll] = useState(false);
+	const [search, setSearch] = useState('');
 
-	const list = showAll ? items : items.slice(0, limit);
+	const list = showAll ? items.filter(item => item.text.toLowerCase().includes(search.toLowerCase())) : items.slice(0, limit);
+
+	const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setSearch(event.target.value);
+	};
 
 	return (
 		<div className={className}>
 			<p className='font-bold mb-3'>{title}</p>
 			{showAll && (
 				<div className='mb-5'>
-					<Input placeholder={searchInputPlaceholder} className='bg-gray-50 border-none' />
+					<Input placeholder={searchInputPlaceholder} onChange={handleSearch} className='bg-gray-50 border-none' />
 				</div>
 			)}
 			<div className='flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar'>

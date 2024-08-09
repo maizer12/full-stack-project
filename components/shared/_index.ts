@@ -7,3 +7,4 @@ export { Filters } from './filters';
 export { FilterCheckbox } from './filter-checkbox';
 export { FilterCheckboxGroup } from './filter-checkbox-group';
 export { RangeSlider } from './range-slider';
+export { ProductCard } from './product-card';
