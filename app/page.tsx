@@ -16,7 +16,7 @@ export default function Home() {
 					<div className='flex-1'>
 						<ProductsGroupList
 							title='Popular pizzas:'
-							categoryId={0}
+							categoryId={1}
 							className='mb-16'
 							items={[
 								{ id: 1, name: 'Пепперони', imageUrl: 'https://www.allrecipes.com/thmb/D73VvwH_cG06pVzh05oitTocYV8=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/48727-Mikes-homemade-pizza-DDMFS-beauty-4x3-BG-2974-a7a9842c14e34ca699f3b7d7143256cf.jpg', price: 100, items: [{ price: 100 }] },
@@ -28,7 +28,7 @@ export default function Home() {
 						/>
 						<ProductsGroupList
 							title='Dinner pizzas:'
-							categoryId={1}
+							categoryId={2}
 							items={[
 								{ id: 1, name: 'Пепперони', imageUrl: 'https://www.allrecipes.com/thmb/D73VvwH_cG06pVzh05oitTocYV8=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/48727-Mikes-homemade-pizza-DDMFS-beauty-4x3-BG-2974-a7a9842c14e34ca699f3b7d7143256cf.jpg', price: 100, items: [{ price: 100 }] },
 								{ id: 2, name: 'Пепперони', imageUrl: 'https://www.allrecipes.com/thmb/D73VvwH_cG06pVzh05oitTocYV8=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/48727-Mikes-homemade-pizza-DDMFS-beauty-4x3-BG-2974-a7a9842c14e34ca699f3b7d7143256cf.jpg', price: 100, items: [{ price: 100 }] },
