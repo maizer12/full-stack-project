@@ -8,11 +8,14 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model Categori {
+model Category {
   id Int @id @default(autoincrement())
 
   name     String    @unique
   products Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model User {
@@ -42,10 +45,10 @@ model Product {
   name     String
   imageUrl String
 
-  Categori   Categori @relation(fields: [categoriId], references: [id])
-  categoriId Int
+  Category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
 
-  ingradient Ingradient[]
+  ingredient Ingredient[]
   variation  ProductVariation[]
 
   cartItem CartItem[]
@@ -65,7 +68,7 @@ model ProductVariation {
   productId Int
 }
 
-model Ingradient {
+model Ingredient {
   id Int @id @default(autoincrement())
 
   name     String
@@ -74,8 +77,8 @@ model Ingradient {
 
   products Product[]
 
-  cartItem   CartItem @relation(fields: [cartItemId], references: [id])
-  cartItemId Int
+  cartItem   CartItem? @relation(fields: [cartItemId], references: [id])
+  cartItemId Int?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -106,7 +109,7 @@ model CartItem {
   cartId Int
 
   sum         Int          @default(0)
-  ingradients Ingradient[]
+  ingredients Ingredient[]
   // pizzaSize Int?
   // pizzaType Int?
 
