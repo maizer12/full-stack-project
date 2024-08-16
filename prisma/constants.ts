@@ -1,3 +1,5 @@
+import bcrypt from 'bcrypt';
+
 export const categories = [
 	{
 		name: 'Pizzas',
@@ -190,3 +192,13 @@ export const products = [
 		categoryId: 5,
 	},
 ];
+
+export const users = () => {
+	return [
+		{ fullName: 'John Doe', email: 'johndoe@me.com', password: bcrypt.hashSync('password', 10), verified: false },
+		{ fullName: 'Jane Smith', email: 'janesmith@me.com', password: bcrypt.hashSync('password', 10), verified: false },
+		{ fullName: 'Bob Johnson', email: 'bobjohnson@me.com', password: bcrypt.hashSync('password', 10), verified: false },
+		{ fullName: 'Alice Brown', email: 'alicebrown@me.com', password: bcrypt.hashSync('password', 10), verified: false },
+		{ fullName: 'Charlie Wilson', email: 'charliewilson@me.com', password: bcrypt.hashSync('password', 10), verified: false },
+	];
+};

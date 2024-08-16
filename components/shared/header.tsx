@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
-import { Container } from './_index';
+import { Container, Search } from './_index';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '../ui/_index';
@@ -21,6 +21,9 @@ export const Header: React.FC<Props> = ({ className }) => {
 						<p className='text-sm text-gray-400 leading-3'>it can&apos;t be tastier</p>
 					</div>
 				</Link>
+				<div className='mx-10 flex-1'>
+					<Search />
+				</div>
 				<div className='flex items-center gap-3'>
 					<Button variant='outline' className='flex gap-2 items-center'>
 						<User size={16} />
