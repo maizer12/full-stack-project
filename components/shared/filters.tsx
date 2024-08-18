@@ -1,49 +1,19 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
 import { Input, Title } from '../ui/_index';
 import { FilterCheckbox } from './filter-checkbox';
 import { RangeSlider } from './range-slider';
 import { FilterCheckboxGroup } from './filter-checkbox-group';
+import { Api } from '@/services/api-client';
+import { useFilterIngredient } from '@/hooks/useFilterIngredient';
 
 interface Props {
 	className?: string;
 }
 
-const items = [
-	{
-		text: 'Cheese Sauce',
-		value: '1',
-	},
-	{
-		text: 'Mozzarella',
-		value: '2',
-	},
-	{
-		text: 'Garlic',
-		value: '3',
-	},
-	{
-		text: 'Tomato Sauce',
-		value: '4',
-	},
-	{
-		text: 'Pepperoni',
-		value: '5',
-	},
-	{
-		text: 'Basil',
-		value: '6',
-	},
-	{
-		text: 'Mushrooms',
-		value: '7',
-	},
-	{
-		text: 'Olives',
-		value: '8',
-	},
-];
-
 export const Filters: React.FC<Props> = ({ className }) => {
+	const { ingredients, isLoading } = useFilterIngredient();
+
 	return (
 		<div className={className}>
 			<Title text='Filtration:' size='sm' className='font-bold mb-5' />
@@ -59,7 +29,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 				</div>
 				<RangeSlider min={0} step={1} max={100} />
 			</div>
-			<FilterCheckboxGroup title='Ingredients:' items={items} limit={6} className='mt-5' />
+			<FilterCheckboxGroup title='Ingredients:' items={ingredients} limit={6} className='mt-5' loading={isLoading} />
 		</div>
 	);
 };

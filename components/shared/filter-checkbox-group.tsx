@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { FilterCheckbox, FilterCheckboxProps } from './filter-checkbox';
-import { Input } from '../ui/_index';
+import { Input, Skeleton } from '../ui/_index';
 import { Plus } from 'lucide-react';
 
 type Item = FilterCheckboxProps;
@@ -11,13 +11,14 @@ interface Props {
 	items: Item[];
 	defaultItems?: Item[];
 	limit?: number;
+	loading: boolean;
 	searchInputPlaceholder?: string;
 	onChange?: (values: string[]) => void;
 	defaultValue?: string[];
 	className?: string;
 }
 
-export const FilterCheckboxGroup: React.FC<Props> = ({ title, items, defaultItems, limit = 5, searchInputPlaceholder = 'Search...', onChange, defaultValue, className }) => {
+export const FilterCheckboxGroup: React.FC<Props> = ({ title, items, defaultItems, limit = 5, searchInputPlaceholder = 'Search...', onChange, defaultValue, loading, className }) => {
 	const [showAll, setShowAll] = useState(false);
 	const [search, setSearch] = useState('');
 
@@ -26,6 +27,17 @@ export const FilterCheckboxGroup: React.FC<Props> = ({ title, items, defaultItem
 	const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSearch(event.target.value);
 	};
+
+	if (loading) {
+		return (
+			<div className={className}>
+				<p className='font-bold mb-3'>{title}</p>
+				{Array.from({ length: limit }).map((_, index) => (
+					<Skeleton key={index} className='h-6 mb-4 rounded-[8px]' />
+				))}
+			</div>
+		);
+	}
 
 	return (
 		<div className={className}>
