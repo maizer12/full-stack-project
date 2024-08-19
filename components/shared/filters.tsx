@@ -4,10 +4,7 @@ import { Input, Title } from '../ui/_index';
 import { RangeSlider } from './range-slider';
 import { FilterCheckboxGroup } from './filter-checkbox-group';
 import { useFilterIngredient } from '@/hooks/useFilterIngredient';
-import { useSet } from 'react-use';
-import qs from 'qs';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useQueryParams } from '@/hooks/useQueryParams';
+import useFilters from '@/hooks/use-filters';
 
 interface FilterPricesProps {
 	min: number;
@@ -22,32 +19,8 @@ interface Props {
 }
 
 export const Filters: React.FC<Props> = ({ priceFilter, className }) => {
-	const { ingredients, isLoading, onAddId, selectedIngredients } = useFilterIngredient();
-	const [price, setPrice] = React.useState({ from: Number(useQueryParams('from')) || priceFilter.min, to: Number(useQueryParams('to')) || priceFilter.max });
-	const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>(useQueryParams('sizes')?.split(',') || []));
-	const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(new Set<string>(useQueryParams('pizzaTypes')?.split(',') || []));
-	const router = useRouter();
-
-	const updatePrice = (name: string, value: number) => {
-		if (value < priceFilter.min || value > priceFilter.max) return;
-		setPrice(prev => ({ ...prev, [name]: value }));
-	};
-
-	React.useEffect(() => {
-		const { min, max } = priceFilter;
-		const checkPrice = price.from !== min || price.to !== max;
-
-		const filters = {
-			from: checkPrice ? price.from : undefined,
-			to: checkPrice ? price.to : undefined,
-			pizzaTypes: Array.from(pizzaTypes),
-			sizes: Array.from(sizes),
-			ingredients: Array.from(selectedIngredients),
-		};
-
-		const queryString = qs.stringify(filters, { skipNulls: true, arrayFormat: 'comma' });
-		router.push(`?${queryString}`, { scroll: false });
-	}, [pizzaTypes, sizes, price, selectedIngredients, router, priceFilter]);
+	const { ingredients, isLoading } = useFilterIngredient();
+	const { price, updatePrice, sizes, toggleSizes, pizzaTypes, togglePizzaTypes, setPrice, toggleIngredients, selectedIngredients } = useFilters(priceFilter);
 
 	return (
 		<div className={className}>
@@ -86,7 +59,7 @@ export const Filters: React.FC<Props> = ({ priceFilter, className }) => {
 				</div>
 				<RangeSlider min={0} step={1} max={100} value={[price.from, price.to]} onValueChange={value => setPrice({ from: value[0], to: value[1] })} />
 			</div>
-			<FilterCheckboxGroup title='Ingredients:' items={ingredients} limit={6} className='mt-5' loading={isLoading} onClickCheckbox={id => onAddId(id)} name='ingredients' selected={selectedIngredients} />
+			<FilterCheckboxGroup title='Ingredients:' items={ingredients} limit={6} className='mt-5' loading={isLoading} onClickCheckbox={id => toggleIngredients(id)} name='ingredients' selected={selectedIngredients} />
 		</div>
 	);
 };
