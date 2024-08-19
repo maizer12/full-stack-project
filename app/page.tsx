@@ -11,7 +11,7 @@ export default function Home() {
 			<Container className='pb-14 mt-9'>
 				<div className='flex gap-12'>
 					<div className='w-[244px]'>
-						<Filters />
+						<Filters priceFilter={{ min: 0, max: 100 }} />
 					</div>
 					<div className='flex-1'>
 						<ProductsGroupList
