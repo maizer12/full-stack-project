@@ -1,9 +1,9 @@
 import React from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
-import qs from 'qs';
+import { useSearchParams } from 'next/navigation';
 import { useSet } from 'react-use';
+import { useFilterRouting } from './_index';
 
-interface PriceFilter {
+export interface PriceFilter {
 	min: number;
 	max: number;
 }
@@ -16,9 +16,8 @@ interface QueryFilters {
 	ingredients: string;
 }
 
-const useFilters = (priceFilter: PriceFilter) => {
+export const useFilters = (priceFilter: PriceFilter) => {
 	const searchParams = useSearchParams() as unknown as Map<keyof QueryFilters, string>;
-	const router = useRouter();
 
 	const [price, setPrice] = React.useState({
 		from: Number(searchParams.get('from')) || priceFilter.min,
@@ -36,21 +35,7 @@ const useFilters = (priceFilter: PriceFilter) => {
 		setPrice(prev => ({ ...prev, [name]: value }));
 	};
 
-	React.useEffect(() => {
-		const { min, max } = priceFilter;
-		const checkPrice = price.from !== min || price.to !== max;
-
-		const filters = {
-			from: checkPrice ? price.from : undefined,
-			to: checkPrice ? price.to : undefined,
-			pizzaTypes: Array.from(pizzaTypes),
-			sizes: Array.from(sizes),
-			ingredients: Array.from(selectedIngredients),
-		};
-
-		const queryString = qs.stringify(filters, { skipNulls: true, arrayFormat: 'comma' });
-		router.push(`?${queryString}`, { scroll: false });
-	}, [pizzaTypes, sizes, price, router, priceFilter, selectedIngredients]);
+	useFilterRouting(price, sizes, pizzaTypes, selectedIngredients, priceFilter);
 
 	return {
 		price,
@@ -64,5 +49,3 @@ const useFilters = (priceFilter: PriceFilter) => {
 		updatePrice,
 	};
 };
-
-export default useFilters;

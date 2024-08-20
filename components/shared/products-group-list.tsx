@@ -30,12 +30,14 @@ export const ProductsGroupList: React.FC<Props> = ({ title, items, className, li
 		}
 	}, [intersection, categoryId, title, setActiveCategoryId]);
 
+	console.log(items);
+
 	return (
 		<div className={className} id={categoryId.toString()} ref={intersectionRef}>
 			<Title text={title} size='lg' className='font-extrabold mb-5' />
 			<div className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
 				{items.map((product, i) => (
-					<ProductCard key={product.id} id={product.id} name={product.name} imageUrl={product.imageUrl} price={product.items[0].price} />
+					<ProductCard key={product.id} id={product.id} name={product.name} imageUrl={product.imageUrl} price={product.variation.price} />
 				))}
 			</div>
 		</div>

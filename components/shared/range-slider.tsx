@@ -24,6 +24,7 @@ const RangeSlider = React.forwardRef(({ className, min, max, step, formatLabel, 
 	}, [min, max, value]);
 
 	const handleValueChange = (newValues: number[]) => {
+		if (newValues[0] === newValues[1]) return;
 		setLocalValues(newValues);
 		if (onValueChange) {
 			onValueChange(newValues);

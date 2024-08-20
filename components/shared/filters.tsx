@@ -3,8 +3,7 @@ import React from 'react';
 import { Input, Title } from '../ui/_index';
 import { RangeSlider } from './range-slider';
 import { FilterCheckboxGroup } from './filter-checkbox-group';
-import { useFilterIngredient } from '@/hooks/useFilterIngredient';
-import useFilters from '@/hooks/use-filters';
+import { useFilterIngredient, useFilters } from '@/hooks/_index';
 
 interface FilterPricesProps {
 	min: number;
