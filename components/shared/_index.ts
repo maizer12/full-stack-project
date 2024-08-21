@@ -12,3 +12,4 @@ export { ProductsGroupList } from './products-group-list';
 export { Search } from './search';
 export { ProductImage } from './product-image';
 export { ProductOptions } from './product-options';
+export * from './modals/_index';

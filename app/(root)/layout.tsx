@@ -1,35 +1,23 @@
 import React from 'react';
-import './globals.css';
-import { Nunito } from 'next/font/google';
 import { Metadata } from 'next';
 import { Header } from '@/components/shared/header';
-
-const nunito = Nunito({
-	subsets: ['cyrillic'],
-	variable: '--font-nunito',
-	weight: ['400', '500', '600', '700', '800', '900'],
-});
 
 export const metadata: Metadata = {
 	title: 'Pizza Shop',
 };
 
-export default function RootLayout({
+export default function HomeLayout({
 	children,
+	modal,
 }: Readonly<{
 	children: React.ReactNode;
+	modal: React.ReactNode;
 }>) {
 	return (
-		<html className={nunito.variable} lang='en'>
-			<head>
-				<link data-rh='true' rel='icon' href='/logo.png' />
-			</head>
-			<body className='min-h-screen'>
-				<main>
-					<Header />
-					{children}
-				</main>
-			</body>
-		</html>
+		<main>
+			<Header />
+			{children}
+			{modal}
+		</main>
 	);
 }
