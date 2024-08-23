@@ -1,4 +1,4 @@
-import { Api } from '@/services/api-client';
+import { Api } from '@/shared/services/api-client';
 import React from 'react';
 
 interface IngredientItem {

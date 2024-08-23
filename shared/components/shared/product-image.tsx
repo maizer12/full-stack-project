@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 import Image from 'next/image';
 import React from 'react';
 
@@ -6,7 +6,7 @@ interface Props {
 	className?: string;
 	src: string;
 	alt: string;
-	size: number;
+	size: 20 | 30 | 40;
 }
 
 export const ProductImage: React.FC<Props> = ({ src, alt, className, size }) => {

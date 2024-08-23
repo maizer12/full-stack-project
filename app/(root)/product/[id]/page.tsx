@@ -1,5 +1,5 @@
-import { Container, ProductImage, ProductOptions } from '@/components/shared/_index';
-import { Title } from '@/components/ui/_index';
+import { Container, ProductImage, ProductOptions } from '@/shared/components/shared/_index';
+import { Title } from '@/shared/components/ui/_index';
 import { prisma } from '@/prisma/prisma-client';
 import { notFound } from 'next/navigation';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { Header } from '@/components/shared/header';
+import { Header } from '@/shared/components/shared/header';
 
 export const metadata: Metadata = {
 	title: 'Pizza Shop',

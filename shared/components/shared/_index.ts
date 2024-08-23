@@ -11,5 +11,6 @@ export { ProductCard } from './product-card';
 export { ProductsGroupList } from './products-group-list';
 export { Search } from './search';
 export { ProductImage } from './product-image';
+export { ChoosePizzaForm } from './choose-pizza-form';
 export { ProductOptions } from './product-options';
 export * from './modals/_index';
