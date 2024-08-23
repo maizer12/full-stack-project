@@ -3,7 +3,6 @@ import Link from 'next/link';
 import React from 'react';
 import { Button, Title } from '../ui/_index';
 import { Plus } from 'lucide-react';
-import { ProductOptions } from './_index';
 
 interface Props {
 	id: number;
@@ -24,7 +23,7 @@ export const ProductCard: React.FC<Props> = ({ id, name, price, imageUrl, classN
 				<p className='text-sm text-gray-400'>Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок</p>
 				<div className='flex justify-between items-center mt-4'>
 					<span className='text-[20px]'>
-						от <b>{price} ₽</b>
+						from <b>{price} $</b>
 					</span>
 
 					<Button variant='secondary' className='text-base font-bold'>

@@ -34,7 +34,7 @@ export const ProductsGroupList: React.FC<Props> = ({ title, items, className, li
 			<Title text={title} size='lg' className='font-extrabold mb-5' />
 			<div className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
 				{items.map((product, i) => (
-					<ProductCard key={product.id} id={product.id} name={product.name} imageUrl={product.imageUrl} price={product.variation.price} />
+					<ProductCard key={product.id} id={product.id} name={product.name} imageUrl={product.imageUrl} price={product.variation[0].price} />
 				))}
 			</div>
 		</div>

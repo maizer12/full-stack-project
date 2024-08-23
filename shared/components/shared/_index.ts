@@ -13,4 +13,5 @@ export { Search } from './search';
 export { ProductImage } from './product-image';
 export { ChoosePizzaForm } from './choose-pizza-form';
 export { ProductOptions } from './product-options';
+export { Ingredient } from './ingredient';
 export * from './modals/_index';

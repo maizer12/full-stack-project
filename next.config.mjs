@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: ['www.allrecipes.com', 'media.dodostatic.net'], // добавьте нужный домен
+		domains: ['cdn.dodostatic.net', 'media.dodostatic.net'], // добавьте нужный домен
 	},
 };
 

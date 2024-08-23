@@ -15,5 +15,5 @@ export default async function ProductModal({ params: { id } }: { params: { id: s
 
 	if (!product) notFound();
 
-	return <ChooseProductModal product={product} />;
+	return <ChooseProductModal product={product} ingredients={product.ingredient || []} />;
 }
