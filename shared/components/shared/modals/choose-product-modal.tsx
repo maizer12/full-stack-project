@@ -17,8 +17,6 @@ interface Props {
 export const ChooseProductModal: React.FC<Props> = ({ product, className, ingredients }) => {
 	const router = useRouter();
 
-	console.log(product);
-
 	return (
 		<div className={cn(className)}>
 			<Dialog open={true} onOpenChange={() => router.back()}>
